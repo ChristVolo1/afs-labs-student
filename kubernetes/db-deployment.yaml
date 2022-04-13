@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: db-deployment
   namespace: cvolosin
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
-        image: harbor.dev.afsmtddso.com/cvolosin-harbor-project/app@sha256:8259290b566f207a79f4f1014836abfa2c31bfb5770387a7edc9d0f2ec79f6ba
+        name: db-deployment
+        image: harbor.dev.afsmtddso.com/cvolosin-harbor-project/db@sha256:39e4c81e7136e9b6b0934692a7a3f7e0b78b0cae3e2905de9c33ae3032d77646
         ports:
-        - containerPort: 5000
+        - containerPort: 5432
