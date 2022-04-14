@@ -1,4 +1,4 @@
---
+-- Adding my own comment: Christy Volosin
 -- PostgreSQL database dump
 --
 
